@@ -1,0 +1,27 @@
+<%= form_with(model: clock_event, local: true) do |form| %>
+  <% if clock_event.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(clock_event.errors.count, "error") %> prohibited this clock_event from being saved:</h2>
+
+      <ul>
+        <% clock_event.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :time_in %>
+    <%= form.datetime_select :time_in %>
+  </div>
+
+  <div class="field">
+    <%= form.label :time_out %>
+    <%= form.datetime_select :time_out %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

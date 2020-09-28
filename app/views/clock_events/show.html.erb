@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Time in:</strong>
+  <%= @clock_event.time_in %>
+</p>
+
+<p>
+  <strong>Time out:</strong>
+  <%= @clock_event.time_out %>
+</p>
+
+<%= link_to 'Edit', edit_clock_event_path(@clock_event) %> |
+<%= link_to 'Back', clock_events_path %>

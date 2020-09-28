@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  time_in: 2020-09-28 09:49:09
+  time_out: 2020-09-28 09:49:09
+
+two:
+  time_in: 2020-09-28 09:49:09
+  time_out: 2020-09-28 09:49:09
