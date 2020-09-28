@@ -4,6 +4,10 @@ class ClockEventsController < ApplicationController
 
   # GET /clock_events
   # GET /clock_events.json
+  def teacher
+    @clock_events = ClockEvent.where(user: current_user).order("created_at DESC")
+  end
+
   def index
     @clock_events = ClockEvent.all
   end
