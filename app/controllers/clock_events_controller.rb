@@ -30,6 +30,7 @@ class ClockEventsController < ApplicationController
   # POST /clock_events.json
   def create
     @clock_event = ClockEvent.new(clock_event_params)
+    @clock_event.user_id = current_user.id
 
     respond_to do |format|
       if @clock_event.save
