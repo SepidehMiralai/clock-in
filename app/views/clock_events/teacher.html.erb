@@ -1,3 +1,21 @@
 <h1>Clock Events</h1>
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Time in</th>
+      <th>Clocking In/Out</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @clock_events.each do |clock_event| %>
+      <tr>
+        <td><%= clock_event.time_logged %></td>
+        <td><%= (clock_event.clock_in?) ? "Clocking In" : "Clocking Out" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
 
 <%= link_to 'New Clock Event', new_clock_event_path %>

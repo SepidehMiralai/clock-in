@@ -11,17 +11,19 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :time_in %>
-    <%= form.datetime_select :time_in %>
+  
+
+  <div class="form-group">
+    <%= form.label :time_logged %>
+    <%= form.datetime_select :time_logged, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :time_out %>
-    <%= form.datetime_select :time_out %>
+  <div class="form_group">
+    <%= form.check_box :clock_in, {class:"form-check-input", type:"checkbox"}, true, false %> 
+    <%= form.label :clock_in, 'Check Box to Clock In', class:"form-check-label" %>         
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="form-group">
+    <%= form.submit 'Create Clock In/Out Event', class: "btn btn-primary" %>
   </div>
 <% end %>

@@ -24,6 +24,7 @@ class ClockEventsController < ApplicationController
 
   # GET /clock_events/1/edit
   def edit
+    @clock_event = ClockEvent.find(params[:id])
   end
 
   # POST /clock_events
@@ -31,6 +32,7 @@ class ClockEventsController < ApplicationController
   def create
     @clock_event = ClockEvent.new(clock_event_params)
     @clock_event.user_id = current_user.id
+    @current_user = current_user
 
     respond_to do |format|
       if @clock_event.save
@@ -75,6 +77,6 @@ class ClockEventsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def clock_event_params
-      params.require(:clock_event).permit(:time_in, :time_out)
+      params.require(:clock_event).permit(:time_logged, :clock_in)
     end
 end
