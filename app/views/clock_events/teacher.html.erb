@@ -1,11 +1,11 @@
-<h2>Clock Events</h2>
+<h3>Clock Events</h3>
 <div class="container">
     <div class="row">
-      <div class="col-sm">
+      <div class="col-md-6">
         <table class="table table-bordered table-striped">
           <thead>
             <tr>
-              <th>Time in</th>
+              <th>Time Logged</th>
               <th>Clocking In/Out</th>
             </tr>
           </thead>
@@ -13,7 +13,7 @@
           <tbody>
             <% @clock_events.each do |clock_event| %>
               <tr>
-                <td><%= clock_event.time_logged %></td>
+                <td><%= clock_event.time_logged.strftime('%B %e, %Y - %l:%M %p') %></td>
                 <td><%= (clock_event.clock_in?) ? "Clocking In" : "Clocking Out" %></td>
               </tr>
             <% end %>

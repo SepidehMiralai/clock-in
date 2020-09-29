@@ -1,37 +1,37 @@
 
 <% if current_user.admin? %>
-<table class="table table-bordered table-striped">
-  <thead>
-    <tr>
-      <th> Employee name </th>
-      <th>Time Logged</th>
-      <th>Clocking In/Out</th>
-      <th>Action</th>
-    </tr>
-  </thead>
-
-  <tbody> 
-    <% @clock_events.each do |clock_event| %>
+  <table class="table table-bordered table-striped">
+    <thead>
       <tr>
-        <td><%= "#{clock_event.user.first_name}"+" "+ "#{clock_event.user.last_name}"%> </td>
-        <td><%= clock_event.time_logged.strftime('%B %e, %Y - %l:%M %p') %></td>
-        <td><%= (clock_event.clock_in?) ? "Clocking In" : "Clocking Out" %></td>
-        <td> 
-          <div class="dropdown">
-            <a class="btn btn-secondary dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Action
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <li> <%= link_to 'View', clock_event %> </li>
-              <li> <%= link_to 'Edit', edit_clock_event_path(clock_event) %> </li>
-              <li> <%= link_to 'Delete', clock_event, method: :delete, data: { confirm: 'Are you sure?' } %> </li>
-            </ul>  
-          </div>     
-        </td>
+        <th> Employee name </th>
+        <th>Time Logged</th>
+        <th>Clocking In/Out</th>
+        <th>Action</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+
+    <tbody> 
+      <% @clock_events.each do |clock_event| %>
+        <tr>
+          <td><%= "#{clock_event.user.first_name}"+" "+ "#{clock_event.user.last_name}"%> </td>
+          <td><%= clock_event.time_logged.strftime('%B %e, %Y - %l:%M %p') %></td>
+          <td><%= (clock_event.clock_in?) ? "Clocking In" : "Clocking Out" %></td>
+          <td> 
+            <div class="dropdown">
+              <a class="btn btn-secondary dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Action
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <li> <%= link_to 'View', clock_event %> </li>
+                <li> <%= link_to 'Edit', edit_clock_event_path(clock_event) %> </li>
+                <li> <%= link_to 'Delete', clock_event, method: :delete, data: { confirm: 'Are you sure?' } %> </li>
+              </ul>  
+            </div>     
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 <% end %>
 
 <br>

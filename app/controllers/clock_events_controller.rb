@@ -1,6 +1,7 @@
 class ClockEventsController < ApplicationController
   before_action :set_clock_event, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+  before_action :check_user, only: [:edit, :update, :destroy]
 
   # GET /clock_events
   # GET /clock_events.json
@@ -77,6 +78,12 @@ class ClockEventsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_clock_event
       @clock_event = ClockEvent.find(params[:id])
+    end
+
+    def check_user
+      unless (@clock_event.user == current_user) || (current_user.admin?)
+        redirect_to root_path, alert: "Sorry, this clock event belongs to someone else!"
+      end
     end
 
     # Only allow a list of trusted parameters through.
