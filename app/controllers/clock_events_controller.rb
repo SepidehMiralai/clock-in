@@ -9,7 +9,11 @@ class ClockEventsController < ApplicationController
   end
 
   def index
-    @clock_events = ClockEvent.all
+    if params[:search]
+      @clock_events = ClockEvent.search(params[:search]).order("created_at DESC")
+    else
+      @clock_events = ClockEvent.all.order("created_at DESC")
+    end
   end
 
   # GET /clock_events/1

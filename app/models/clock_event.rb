@@ -4,6 +4,10 @@ class ClockEvent < ApplicationRecord
   validate :check_clock_in_after_clock_out
   validate :check_clock_out_after_clock_in
 
+  def self.search(search)
+    ClockEvent.joins(:user).where('users.first_name LIKE ? or users.last_name LIKE ?', "%#{search}%", "%#{search}%" )
+  end
+
   private
 
   def check_clock_in_after_clock_out

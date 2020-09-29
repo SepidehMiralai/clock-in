@@ -1,28 +1,40 @@
 
 <% if current_user.admin? %>
-  <table>
-    <thead>
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th> Employee name </th>
+      <th>Time Logged</th>
+      <th>Clocking In/Out</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+
+  <tbody> 
+    <% @clock_events.each do |clock_event| %>
       <tr>
-        <th>Time in</th>
-        <th>Clocking In/Out</th>
-        <th colspan="3"></th>
+        <td><%= "#{clock_event.user.first_name}"+" "+ "#{clock_event.user.last_name}"%> </td>
+        <td><%= clock_event.time_logged.strftime('%B %e, %Y - %l:%M %p') %></td>
+        <td><%= (clock_event.clock_in?) ? "Clocking In" : "Clocking Out" %></td>
+        <td> 
+          <div class="dropdown">
+            <a class="btn btn-secondary dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Action
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <li> <%= link_to 'View', clock_event %> </li>
+              <li> <%= link_to 'Edit', edit_clock_event_path(clock_event) %> </li>
+              <li> <%= link_to 'Delete', clock_event, method: :delete, data: { confirm: 'Are you sure?' } %> </li>
+            </ul>  
+          </div>     
+        </td>
       </tr>
-    </thead>
+    <% end %>
+  </tbody>
+</table>
+<% end %>
 
-    <tbody>
-      <% @clock_events.each do |clock_event| %>
-        <tr>
-          <td><%= clock_event.time_logged %></td>
-          <td><%= (clock_event.clock_in?) ? "Clocking In" : "Clocking Out" %></td>
-          <td><%= link_to 'Show', clock_event %></td>
-          <td><%= link_to 'Edit', edit_clock_event_path(clock_event) %></td>
-          <td><%= link_to 'Delete', clock_event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-  <% end %>
+<br>
 
-<%= link_to 'create Clock In/Out', new_clock_event_path, class:"btn btn-primary" %>
-
-
+<%= link_to 'New Clock Event', new_clock_event_path %>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
