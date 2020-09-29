@@ -1,4 +1,5 @@
 
-<%= render 'form', clock_event: @clock_event %>
+<%= button_to 'Clock In', clock_events_path, class: "btn btn-primary", :method=>:post, params: { clock_event: { clock_in: true, time_logged: Time.now }}  %>
+<%= button_to 'Clock Out', clock_events_path, :method=>:post, params: { clock_event: { clock_in: false, time_logged: Time.now }}  %>
 
 <%= link_to 'Back', clock_events_path %>
