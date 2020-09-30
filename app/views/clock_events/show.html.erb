@@ -1,8 +1,16 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>Employee Name:</strong>
+  <%= "#{@clock_event.user.first_name}"+" "+ "#{@clock_event.user.last_name}" %>
+</p>
+<p>
   <strong>Time logged:</strong>
-  <%= @clock_event.time_logged %>
+  <%= @clock_event.time_logged.strftime('%B %e, %Y - %l:%M %p') %>
+</p>
+<p>
+  <strong>Clocking In/Out:</strong>
+  <%= (@clock_event.clock_in?) ? "Clocking In" : "Clocking Out" %>
 </p>
 
 <%= link_to 'Edit', edit_clock_event_path(@clock_event) %> |

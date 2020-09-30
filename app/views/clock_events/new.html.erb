@@ -1,5 +1,19 @@
 
-<%= button_to 'Clock In', clock_events_path, class: "btn btn-primary", :method=>:post, params: { clock_event: { clock_in: true, time_logged: Time.now }}  %>
-<%= button_to 'Clock Out', clock_events_path, :method=>:post, params: { clock_event: { clock_in: false, time_logged: Time.now }}  %>
+<% if @clock_event.errors.any? %>
+  <div id="error_explanation">
+    <h3><%= pluralize(@clock_event.errors.count, "error") %> prohibited this clock_event from being saved:</h3>
 
+    <ul>
+      <% @clock_event.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= button_to 'Clock In', clock_events_path, class: "btn btn-primary", :method=>:post, params: { clock_event: { clock_in: true, time_logged: Time.now }}  %>
+<br>
+<%= button_to 'Clock Out', clock_events_path, :method=>:post, params: { clock_event: { clock_in: false, time_logged: Time.now }}  %>
+<br>
+<br>
 <%= link_to 'Back', clock_events_path %>
