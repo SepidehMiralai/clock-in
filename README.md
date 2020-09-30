@@ -27,7 +27,7 @@
   
  * If you were given another day to work on this, how would you spend it? What if you were given a month?
     - If I was given one more day, I would work more on the front end part and add more features like pagination. Also I would add test cases for models and controllers.
-    - If I was given a month, I would improve the layouts and front end part, probably switching to using react. I also try to add more tables to it including the children education centers. 
+    - If I was given a month, I would improve the layouts and front end part, probably switching to using react. I will add more tables to it including daycare table so that multiple daycares can use the app on the cloud.
   
 
 * Deployment instructions:
