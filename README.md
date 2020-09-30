@@ -1,20 +1,20 @@
 * How did you approach this challenge?
 1) I specified all necessary usecases and actors in my app.
   Usecases included the following:
-    - sign in/ sign up/ sign out for all users
-    - Clock In/Clock Out for all users
-    - View time logged for all users
-    - Edit/Delete time logged only for admins
-    - Search users time logged based on the users first name or last name , only for admins
+    - sign in/ sign up/ sign out for User
+    - Clock In/Clock Out for User
+    - View time logged for User
+    - Edit/Delete time logged for Admin
+    - Search users time logged based on the users first name or last name , for Admin
  2) I specified the actors:
-    - normal user
-    - admin
+    - User
+    - Admin
  3) I specified database tables , their fields and their relationship.
   
  4) I sketched the design of the app on paper.
  
  * What schema design did you choose and why?
-    - I used a schema design including a users table and a clock_events table, because we need the users to sign in first and then create clock in/clock out event. So      we need these tables with one to many relationship, meaning that each user has many clock events.
+    - I used a schema design including a users table and a clock_events table, because we want the users to sign in first and then create clock in/clock out events. So      we need these tables with one to many relationship, meaning that each user has many clock events.
     - The users table include first name, last name, email, paassword and admin field to show if the user is admin or not.
     - The clock_events table including time_logged field to show the time and clock_in boolean field to specify clock in or clock out
   
@@ -24,6 +24,8 @@
   
 
 * Deployment instructions:
- This app is deployed on heroku with this link: https://sepid-clock-in.herokuapp.com/clock_events
-
-* ...
+ This app is deployed on heroku with this link: https://sepid-clock-in.herokuapp.com/clock_events. 
+ I created an admin user with the following sign in information. The admin field of the admin user is set to true.
+  - email: sepid@test.com
+  - password: 123456
+ 
