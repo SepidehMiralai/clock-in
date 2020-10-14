@@ -2,6 +2,9 @@ require 'test_helper'
 
 class ClockEventsControllerTest < ActionDispatch::IntegrationTest
   setup do
+    get '/users/sign_in'
+    sign_in users(:user1)
+    post user_session_url
     @clock_event = clock_events(:one)
   end
 
@@ -17,7 +20,7 @@ class ClockEventsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create clock_event" do
     assert_difference('ClockEvent.count') do
-      post clock_events_url, params: { clock_event: { time_in: @clock_event.time_in, time_out: @clock_event.time_out } }
+      post clock_events_url, params: { clock_event: { time_logged: @clock_event.time_logged, clock_in: @clock_event.clock_in } }
     end
 
     assert_redirected_to clock_event_url(ClockEvent.last)
@@ -34,7 +37,7 @@ class ClockEventsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update clock_event" do
-    patch clock_event_url(@clock_event), params: { clock_event: { time_in: @clock_event.time_in, time_out: @clock_event.time_out } }
+    patch clock_event_url(@clock_event), params: { clock_event: { time_logged: @clock_event.time_logged, clock_in: @clock_event.clock_in } }
     assert_redirected_to clock_event_url(@clock_event)
   end
 

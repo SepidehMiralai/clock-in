@@ -13,7 +13,8 @@ class ClockEventsController < ApplicationController
     if params[:search]
       @clock_events = ClockEvent.search(params[:search]).order("created_at DESC")
     else
-      @clock_events = ClockEvent.all.order("created_at DESC")
+      # @clock_events = ClockEvent.all.order("created_at DESC")
+      @clock_events = ClockEvent.paginate(page: params[:page], per_page: 3)
     end
   end
 
